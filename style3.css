@@ -1,0 +1,66 @@
+.logo{
+	width: 12%;
+	float: left;
+}
+
+section{
+	background-image: url(images/image.jpg);
+	background-size: cover;
+	background-position: center;
+}
+
+.pic{
+	background-color:rgb(232, 239, 245);
+	
+}
+
+
+
+.navbar {
+	background-color: #987c98;
+	overflow: hidden;
+}
+
+.navbar a {
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 20px;
+	text-decoration: none;
+}
+
+
+img{
+	padding-right: 20px;
+}
+.search-bar {
+	float: right;
+	padding: 10px;
+}
+body{
+    background-image: url(images/bg.png);
+}
+
+#inner2{
+	height: 100%;
+	width: 49%;
+	box-sizing: border-box;
+	box-shadow: 10px 10px 25px rgb(199, 199, 247);
+	/* float: right; */
+	text-align: left;
+	padding-top: 20px;
+}
+
+#main2{
+	height: 500px;
+	width: 1500px;
+}
+
+/* .abc{
+	transform: translateY(-500px);
+} */
+
+footer{
+	padding-bottom: 20px;
+}

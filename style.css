@@ -1,0 +1,281 @@
+.logo{
+	width: 12%;
+	float: left;
+}
+
+body{
+	background-image: url(images/bgg.png);
+
+}
+
+section{
+	background-image: url(images/image.jpg);
+	background-size: cover;
+	background-position: center;
+
+
+}
+
+.pic{
+	background-color: lavender;
+	
+}
+
+.abc{
+    max-width: 100%; 
+	height: 100%;
+	width: 150px;
+    transform: translateY(-50%);
+	float: right;
+	top: -8px; 
+	right: 0;
+}
+
+.popup {
+	background-color: solid palevioletred;
+	margin: 200px;
+	/* background-color: solid palevioletred; */
+}
+
+.pop{
+	background-color: lavender;
+}
+.popup img{
+	width: 300px;
+	height : 100%;
+	
+}
+
+.navbar {
+	background-color: #987c98;
+	overflow: hidden;
+}
+
+.navbar a {
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 20px;
+	text-decoration: none;
+}
+
+.offer{
+	max-width: 100%;
+    overflow: hidden ;
+	height: 30%;
+	border: 1px solid black;
+	padding: 80px;
+	margin: 10px;
+	background-color: rgb(200, 162, 200) ;
+}
+
+#off{
+font-size: 50px;
+margin-bottom: 10px;
+color: grey;
+}
+
+.offer h1{
+    float: right;
+	font-size: 3rem;
+	color: rgb(65, 28, 65);
+    margin-top: 0px;
+}
+
+.offer h2{
+    float: right;
+	font-size: 2rem;
+	color: rgb(65, 28, 65);
+    margin-top: 0px;
+}
+
+.offer img{
+	margin-top: -110px;
+}
+
+ .offer p{
+	font-size: 1rem;
+	float: right;
+	color: black;
+	margin: 0px;
+}
+
+.offer image{
+	float: left;
+} 
+
+#fairy{
+	float: left;
+
+}
+
+.ser{
+	padding-right: 200px;
+}
+.product {
+	margin: 10px 0;
+	padding: 10px;
+	border: 1px solid #ccc;
+  }
+
+img{
+	padding-right: 20px;
+}
+.search-bar {
+	float: right;
+	padding: 20px;
+	padding-top: 20px;
+}
+
+
+
+input[type="text"] {
+	padding: 6px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+}
+
+
+.img{
+		
+		height:100% ;
+		width: 100%;
+}
+
+/* .book1 {
+	position: relative;
+	width: 100px;
+	height: 150px;
+	overflow: hidden;
+    display: inline-block;
+  }
+  
+
+.book1{
+	float:left;
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+
+.text{
+	font-family: 'Roboto', sans-serif;
+	
+}
+.book1:hover{
+	transform: translateY(-10px);
+} */
+
+.book2{
+	float:left; 
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+
+.book2:hover{
+	transform: translateY(-10px);
+}
+
+
+.book3{
+	float:center; 
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+
+.book3:hover{
+	transform: translateY(-10px);
+}
+
+.book4{
+	float:right; 
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+
+.book4:hover{
+	transform: translateY(-10px);
+}
+
+
+.book3{
+	float:center; 
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+.book3:hover{
+	transform: translateY(-10px);
+}
+
+
+.candle1{
+	float:center; 
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+
+.candle1:hover{
+	transform: translateY(-10px);
+}
+
+.candle2{
+	float:center; 
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+
+.candle2:hover{
+	transform: translateY(-10px);
+}
+
+.candle4{
+	float:center; 
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+
+.candle4:hover{
+	transform: translateY(-10px);
+}
+
+.candle5{
+	float:center; 
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+
+.candle5:hover{
+	transform: translateY(-10px);
+}
+
+.text {
+	text-align: center; 
+	margin-bottom: 20px; 
+}
+.horizontal-line {
+	border-top: 2px solid black; 
+	margin: 10px 0; 
+}
+.Bookmark {
+	display: flex; 
+	justify-content: space-around; 
+	flex-wrap: wrap; 
+}
+.Bookmark .bookmark1, .Bookmark .bookmark2, .Bookmark .bookmark3 {
+	width: 200px; 
+	text-align: center;
+	margin: 10px;
+}
+.Bookmark img {
+	width: 100%; 
+	height: auto; 
+}
+.button {
+	width: 100%; 
+	height: 30px; 
+	margin-top: 10px; 
+}
+
+footer{
+	padding-bottom: 20px;
+}

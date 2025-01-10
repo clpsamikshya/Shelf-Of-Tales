@@ -1,0 +1,199 @@
+.logo{
+	width: 12%;
+	float: left;
+}
+
+section{
+	background-image: url(images/image.jpg);
+	background-size: cover;
+	background-position: center;
+}
+
+.navbar {
+	background-color: #987c98;
+	overflow: hidden;
+}
+
+.navbar a {
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 20px;
+	text-decoration: none;
+}
+
+
+img{
+	padding-right: 20px;
+}
+
+.search-bar {
+	float: right;
+	padding: 10px;
+}
+
+.horizontal-line {
+	margin: 20px 0; /* Adds spacing above and below the line */
+	border-top: 2px solid white; /* Adjust thickness and color as needed */
+	width:100%;
+	text-align: right;
+	max-width: 100%;
+	
+
+  }
+
+  .abc{
+    max-width: 100%; 
+	height: 100%;
+	width:150px;
+    transform: translateY(-50%);
+	float: right;
+	top: -8px; 
+	right: 0;
+}
+
+body{
+    background-image: url(images/bg.png);
+}
+
+.pic{
+	background-color:lavender;
+	
+}
+
+
+.offer{
+	max-width: 100%;
+    overflow: hidden ;
+	height: 30%;
+	border: 1px solid black;
+	padding: 80px;
+	margin: 10px;
+	background-color: rgb(200, 162, 200) ;
+}
+
+#off{
+font-size: 50px;
+margin-bottom: 10px;
+color: grey;
+}
+
+.offer h1{
+    float: right;
+	font-size: 3rem;
+	color: rgb(65, 28, 65);
+    margin-top: 0px;
+}
+
+.offer h2{
+    float: right;
+	font-size: 2rem;
+	color: rgb(65, 28, 65);
+    margin-top: 0px;
+}
+
+.offer img{
+	margin-top: -110px;
+}
+
+ .offer p{
+	font-size: 1rem;
+	float: right;
+	color: black;
+	margin: 0px;
+}
+
+.offer image{
+	float: left;
+} 
+
+#fairy{
+	float: right;
+
+}
+
+.img{
+		
+		height: 100%;
+		width: 100%;
+		
+
+}
+
+.book1{
+	float:left;
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+
+.book1:hover{
+	transform: translateY(-10px);
+}
+
+.book2{
+	float:left; 
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+
+.book2:hover{
+	transform: translateY(-10px);
+}
+
+
+.book3{
+	float:left; 
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+
+.book3:hover{
+	transform: translateY(-10px);
+}
+
+.book4{
+	float:left; 
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+
+.book4:hover{
+	transform: translateY(-10px);
+}
+
+.book5{
+	float:left; 
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+
+.book5:hover{
+	transform: translateY(-10px);
+}
+
+.book6{
+	float:left; 
+	padding-left: 10px;
+	transition: transform 0.5s;
+}
+
+.book6:hover{
+	transform: translateY(-10px);
+}
+
+
+.book7{
+	padding-left: 10px;
+	float: left;
+	transition: transform 0.5s;
+}
+
+.book7:hover{
+	transform: translateY(-10px);
+}
+
+footer{
+	padding-top: 30px;
+	padding-bottom: 20px;
+}

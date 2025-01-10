@@ -1,0 +1,60 @@
+.logo{
+	width: 12%;
+	float: left;
+}
+
+section{
+	background-image: url(images/image.jpg);
+	background-size: cover;
+	background-position: center;
+}
+
+.pic{
+	background-color:rgb(232, 239, 245);
+	
+}
+
+
+
+.navbar {
+	background-color: #987c98;
+	overflow: hidden;
+}
+
+.navbar a {
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 20px;
+	text-decoration: none;
+}
+
+
+img{
+	padding-right: 20px;
+}
+.search-bar {
+	float: right;
+	padding: 10px;
+}
+
+.formm{
+	border:4px solid black;
+    width:45%;
+    float: left;
+}
+
+.cont{
+	border:4px solid black; 
+	width:53%; 
+	float: right;
+}
+
+body{
+    background-image: url(images/bg.png);
+}
+
+footer{
+	padding-bottom: 20px;
+}

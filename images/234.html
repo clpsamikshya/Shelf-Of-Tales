@@ -1,0 +1,103 @@
+<html>
+<style>
+     .center{
+            padding:50px;
+        }
+        
+        body{
+    background-image: url(images/bg.png);
+}
+        </style>
+
+
+<?php session_start();
+
+include('header3.php');
+?>
+    <body>
+    <h2>Add a Book</h2>
+    <!-- enctype="multipart/form-data" -->
+    <form id="form" class="white" name="form" method="post"  action="">
+        <label for="productname">Product Name:</label>
+        <input type="text" id="productname" name="productname" required><br><br>
+        
+        <label for="Author">Author:</label>
+        <input type="text" id="Author" name="Author" required><br><br>
+        
+        <label for="Price">Price:</label>
+        <input type="number" id="Price" name="Price" required><br><br>
+        
+        <label for="Genre">Genre:</label>
+        <input type="text" id="Genre" name="Genre" required><br><br>
+        
+        <label for="description">Description:</label><br>
+        <textarea id="Description" name="Description" rows="4" cols="50" required></textarea><br><br>
+        
+        <label for="image">Book Cover Image:</label>
+        <input type="file" id="image" name="image"  enctype="multipart/form-data" accept="image/*" required><br><br>
+        
+        <input type="submit" name="submit" value="Add Book" class="btn brand z-depth-0">
+    </form>
+
+    <?php
+include 'connection.php';
+if (isset($_POST['submit'])) {
+    
+    $targetDir = "images"; 
+    $targetFile = $targetDir . basename($_FILES["image"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+    // Check if image file is a actual image
+    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    if ($check === false) {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+
+    // Check file size (currently set to 5MB)
+    if ($_FILES["image"]["size"] > 5000000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+
+    // Allow certain file formats
+    $allowedExtensions = array("jpg", "jpeg", "png", "gif", "webp");
+    if (!in_array($imageFileType, $allowedExtensions)) {
+        echo "Sorry, only JPG, JPEG, PNG, GIF & WEBP files are allowed.";
+        $uploadOk = 0;
+    }
+
+    // If everything is ok, try to upload file
+    if ($uploadOk == 1) {
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
+            // Prepare SQL statement to insert into product table
+            $productName = $_POST['productname'];
+            $Author = $_POST['Author'];
+            $Price = floatval($_POST['Price']);
+            $Genre = $_POST['Genre'];
+            $Description = $_POST['Description'];
+            $imageFilename = basename($_FILES["image"]["name"]); // Save filename to database
+
+            $insert = "INSERT INTO product (productname, Author, Description, Genre, Price, Image) VALUES (?, ?, ?, ?, ?, ?)";
+            // $insert->bind_param("ssssds", $productName, $Author, $Description, $Genre, $Price, $imageFilename);
+
+            // Execute prepared statement
+            if ($stmt->execute()) {
+                echo "Book added successfully!";
+            } else {
+                echo "Error: " . $stmt->error;
+            }
+
+            // Close statement and connection
+            $stmt->close();
+            $conn->close();
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    }
+}
+?>
+
+</body>
+</html>

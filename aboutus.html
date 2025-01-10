@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shelf of Tales - Online Bookstore</title>
+    <link rel="stylesheet" href="">
+    <style>
+        /* Reset styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(images/bgg.png);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: lavender;
+    color: grey;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background-color: #D8BFD8;
+    color: #fff;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.header .navigation {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.header .navigation ul {
+    list-style-type: none;
+}
+
+.header .navigation ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.header .navigation ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.header .navigation ul li a:hover {
+    text-decoration: underline;
+}
+
+.hero {
+    background-image: url('hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-text {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.section {
+    padding: 40px 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.service {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.service h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.genre-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.genre {
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.genre h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.footer {
+    background-color: #004d40;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer p {
+    margin: 0;
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Shelf of Tales</h1>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#genres">Explore Genres</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h2>Welcome to Shelf of Tales</h2>
+            <p class="hero-text">Embark on a journey through words and imagination. Discover your next adventure with us.</p>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service">
+                    <h3>Wide Range of Titles</h3>
+                    <p>Explore a diverse collection of books spanning genres like fiction, non-fiction, children's books, and more.</p>
+                </div>
+                <div class="service">
+                    <h3>Multiple Formats</h3>
+                    <p>Choose from physical books delivered with care or eBooks for instant reading convenience.</p>
+                </div>
+                <div class="service">
+                    <h3>Personalized Recommendations</h3>
+                    <p>Get tailored book suggestions based on your preferences and browsing history.</p>
+                </div>
+                <div class="service">
+                    <h3>Engaging Community</h3>
+                    <p>Join book clubs, participate in discussions, and connect with fellow readers and authors.</p>
+                </div>
+                <div class="service">
+                    <h3>Special Offers</h3>
+                    <p>Enjoy discounts, promotions, and exclusive deals to expand your library affordably.</p>
+                </div>
+                <div class="service">
+                    <h3>Secure Transactions</h3>
+                    <p>Shop confidently with secure payment methods and reliable customer support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="genres" class="section">
+        <div class="container">
+            <h2>Explore Genres</h2>
+            <div class="genre-list">
+                <div class="genre">
+                    <h3>Fiction</h3>
+                    <p>Immerse yourself in captivating stories and imaginative worlds.</p>
+                </div>
+                <div class="genre">
+                    <h3>Non-Fiction</h3>
+                    <p>Expand your knowledge with insightful books on various subjects.</p>
+                </div>
+                <div class="genre">
+                    <h3>Children's Books</h3>
+                    <p>Spark joy and curiosity in young minds with delightful tales and educational reads.</p>
+                </div>
+                <div class="genre">
+                    <h3>Bestsellers</h3>
+                    <p>Discover what's trending and explore popular titles loved by readers worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Have questions or need assistance? Reach out to our dedicated support team for prompt assistance.</p>
+            <p>Email: <a href="mailto:info@shelfoftales.com">info@shelfoftales.com</a></p>
+            <p>Follow us: <a href="https://twitter.com/shelfoftales">Twitter</a> | <a href="https://www.facebook.com/shelfoftales">Facebook</a></p>
+        </div>
+    </section>
+
+    <!-- <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Shelf of Tales. All rights reserved.</p>
+        </div>
+    </footer> -->
+
+</body>
+</html>
