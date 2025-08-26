@@ -41,7 +41,7 @@ include('header1.php');
             // Set a session variable for admin
             $_SESSION['UserName'] = $UserName;
             $_SESSION['is_admin'] = true;
-            header("Location: addbook.php");
+            header("Location: admin_dashboard.php");
             exit;
         }
 

@@ -11,15 +11,6 @@ CREATE TABLE IF NOT EXISTS customers (
     Contact VARCHAR(20)
 );
 
-CREATE TABLE IF NOT EXISTS product (
-    productname VARCHAR(255) PRIMARY KEY,
-    Author VARCHAR(255) NOT NULL,
-    Descriptions TEXT,
-    Genre VARCHAR(100),
-    Price DECIMAL(10,2),
-    Images VARCHAR(255)
-);
-
 CREATE TABLE IF NOT EXISTS cartt (
     id INT AUTO_INCREMENT PRIMARY KEY,
     UserName VARCHAR(255) NOT NULL,
@@ -45,6 +36,14 @@ CREATE TABLE books (
     Description TEXT,
     Genre VARCHAR(100),
     Author VARCHAR(100)
+);
+
+CREATE TABLE accessories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Category VARCHAR(100),
+    Image VARCHAR(255),
+    Price DECIMAL(10, 2)
 );
 
 

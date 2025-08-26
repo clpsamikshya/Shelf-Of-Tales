@@ -5,18 +5,16 @@ include 'connection.php';
 
 // Redirect if not logged in (optional)
 if (!isset($_SESSION['UserName'])) {
-    header("Location: login.php");
+    header("Location: admin_dashboard.php");
     exit;
 }
 
-$book = [
+$accessory = [
     'id' => '',
-    'BookName' => '',
-    'Genre' => '',
-    'Author' => '',
-    'Price' => '',
-    'Description' => '',
-    'Image' => ''
+    'Name' => '',
+    'Category' => '',
+    'Image' => '',
+    'Price' => ''
 ];
 
 $isEdit = false;
@@ -26,16 +24,16 @@ $message = "";
 if (isset($_GET['id'])) {
     $isEdit = true;
     $id = intval($_GET['id']);
-    
-    $stmt = $conn->prepare("SELECT * FROM books WHERE id = ?");
+
+    $stmt = $conn->prepare("SELECT * FROM accessories WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
-    
+
     if ($result && $result->num_rows === 1) {
-        $book = $result->fetch_assoc();
+        $accessory = $result->fetch_assoc();
     } else {
-        // No book found, redirect back
+        // No accessory found, redirect back
         header("Location: admin_dashboard.php");
         exit;
     }
@@ -45,25 +43,23 @@ if (isset($_GET['id'])) {
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = isset($_POST['id']) ? intval($_POST['id']) : null;
-    $BookName = trim($_POST['BookName']);
-    $Genre = trim($_POST['Genre']);
-    $Author = trim($_POST['Author']);
+    $Name = trim($_POST['Name']);
+    $Category = trim($_POST['Category']);
     $Price = floatval($_POST['Price']);
-    $Description = trim($_POST['Description']);
 
-    // Handle image upload
-    $imageName = $book['Image'] ?? ''; // keep old image if editing
+    // Keep old image if editing
+    $imageName = $accessory['Image'] ?? '';
+
+    // Handle image upload if a new file is provided
     if (!empty($_FILES['Image']['name'])) {
         $targetDir = "images/";
         $imageName = basename($_FILES["Image"]["name"]);
 
-        // Simple validation - you can expand this
+        // Validate file extension
         $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
         $ext = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
         if (in_array($ext, $allowedTypes)) {
-            if (move_uploaded_file($_FILES["Image"]["tmp_name"], $targetDir . $imageName)) {
-                // Upload successful
-            } else {
+            if (!move_uploaded_file($_FILES["Image"]["tmp_name"], $targetDir . $imageName)) {
                 $message = "❌ Error uploading image.";
             }
         } else {
@@ -73,33 +69,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$message) {
         if ($id) {
-            // Update existing book
+            // Update existing accessory
             if ($imageName) {
-              $stmt = $conn->prepare("UPDATE books SET BookName=?, Genre=?, Author=?, Price=?, Description=?, Image=? WHERE id=?");
-            $stmt->bind_param("sssdssi", $BookName, $Genre, $Author, $Price, $Description, $imageName, $id);
-
+                $stmt = $conn->prepare("UPDATE accessories SET Name=?, Category=?, Price=?, Image=? WHERE id=?");
+                $stmt->bind_param("ssdsi", $Name, $Category, $Price, $imageName, $id);
             } else {
-                $stmt = $conn->prepare("UPDATE books SET BookName=?, Genre=?, Author=?, Price=?, Description=? WHERE id=?");
-                $stmt->bind_param("sssdsi", $BookName, $Genre, $Author, $Price, $Description, $id);
+                $stmt = $conn->prepare("UPDATE accessories SET Name=?, Category=?, Price=? WHERE id=?");
+                $stmt->bind_param("ssdi", $Name, $Category, $Price, $id);
             }
             if ($stmt->execute()) {
-                $message = "✅ Book updated successfully.";
+                $message = "✅ Accessory updated successfully.";
                 header("Location: admin_dashboard.php?message=" . urlencode($message));
                 exit;
             } else {
-                $message = "❌ Error updating book: " . htmlspecialchars($stmt->error);
+                $message = "❌ Error updating accessory: " . htmlspecialchars($stmt->error);
             }
             $stmt->close();
         } else {
-            // Insert new book
-            $stmt = $conn->prepare("INSERT INTO books (BookName, Genre, Author, Price, Description, Image) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssds s", $BookName, $Genre, $Author, $Price, $Description, $imageName);
+            // Insert new accessory
+            $stmt = $conn->prepare("INSERT INTO accessories (Name, Category, Price, Image) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssds", $Name, $Category, $Price, $imageName);
             if ($stmt->execute()) {
-                $message = "✅ Book added successfully.";
+                $message = "✅ Accessory added successfully.";
                 header("Location: admin_dashboard.php?message=" . urlencode($message));
                 exit;
             } else {
-                $message = "❌ Error adding book: " . htmlspecialchars($stmt->error);
+                $message = "❌ Error adding accessory: " . htmlspecialchars($stmt->error);
             }
             $stmt->close();
         }
@@ -114,7 +109,7 @@ $conn->close();
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><?= $isEdit ? "Edit Book" : "Add New Book" ?></title>
+<title><?= $isEdit ? "Edit Accessory" : "Add New Accessory" ?></title>
 <style>
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -217,7 +212,7 @@ $conn->close();
 <div class="container">
   <a href="admin_dashboard.php" class="back-link">&larr; Back to Dashboard</a>
 
-  <h1><?= $isEdit ? "Edit Book" : "Add New Book" ?></h1>
+  <h1><?= $isEdit ? "Edit Accessory" : "Add New Accessory" ?></h1>
 
   <?php if ($message): ?>
     <div class="message <?= strpos($message, '✅') === 0 ? 'success' : 'error' ?>">
@@ -225,27 +220,21 @@ $conn->close();
     </div>
   <?php endif; ?>
 
-  <form action="addbook.php<?= $isEdit ? '?id=' . $book['id'] : '' ?>" method="POST" enctype="multipart/form-data">
+  <form action="" method="POST" enctype="multipart/form-data">
 
-    <label for="BookName">Book Name:</label>
-    <input type="text" id="BookName" name="BookName" value="<?= htmlspecialchars($book['BookName']) ?>" required />
+    <label for="Name">Accessory Name:</label>
+    <input type="text" id="Name" name="Name" value="<?= htmlspecialchars($accessory['Name']) ?>" required />
 
-    <label for="Genre">Genre:</label>
-    <input type="text" id="Genre" name="Genre" value="<?= htmlspecialchars($book['Genre']) ?>" required />
-
-    <label for="Author">Author:</label>
-    <input type="text" id="Author" name="Author" value="<?= htmlspecialchars($book['Author']) ?>" required />
+    <label for="Category">Category:</label>
+    <input type="text" id="Category" name="Category" value="<?= htmlspecialchars($accessory['Category']) ?>" />
 
     <label for="Price">Price (NPR):</label>
-    <input type="number" step="0.01" id="Price" name="Price" value="<?= htmlspecialchars($book['Price']) ?>" required />
+    <input type="number" step="0.01" id="Price" name="Price" value="<?= htmlspecialchars($accessory['Price']) ?>" required />
 
-    <label for="Description">Description:</label>
-    <textarea id="Description" name="Description" required><?= htmlspecialchars($book['Description']) ?></textarea>
-
-    <?php if ($isEdit && $book['Image'] && file_exists('images/' . $book['Image'])): ?>
+    <?php if ($isEdit && $accessory['Image'] && file_exists('images/' . $accessory['Image'])): ?>
       <div class="current-image">
         <label>Current Image:</label><br>
-        <img src="images/<?= htmlspecialchars($book['Image']) ?>" alt="<?= htmlspecialchars($book['BookName']) ?>" />
+        <img src="images/<?= htmlspecialchars($accessory['Image']) ?>" alt="<?= htmlspecialchars($accessory['Name']) ?>" />
       </div>
     <?php endif; ?>
 
@@ -253,10 +242,10 @@ $conn->close();
     <input type="file" id="Image" name="Image" accept="image/*" <?= $isEdit ? '' : 'required' ?> />
 
     <?php if ($isEdit): ?>
-      <input type="hidden" name="id" value="<?= htmlspecialchars($book['id']) ?>" />
+      <input type="hidden" name="id" value="<?= htmlspecialchars($accessory['id']) ?>" />
     <?php endif; ?>
 
-    <button type="submit"><?= $isEdit ? "Update Book" : "Add Book" ?></button>
+    <button type="submit"><?= $isEdit ? "Update Accessory" : "Add Accessory" ?></button>
   </form>
 </div>
 
