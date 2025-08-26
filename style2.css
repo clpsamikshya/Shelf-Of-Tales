@@ -1,11 +1,14 @@
-
-  :root {
+:root {
   --navbar-color: #987c98;
   --dark-color: #555;
   --primary-color: #988398ff;
   --highlight-color: #f39c12;
   --text-color: white;
   --max-content-width: 1200px;
+
+  /* Added button colors */
+  --button-bg: #987c98;          /* Same as navbar */
+  --button-hover-bg: #f39c12;    /* Highlight color */
 }
 
 /* Navbar */
@@ -87,6 +90,73 @@ nav.nav-links a:hover {
   color: black;
 }
 
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+}
+
+.modal-content img {
+  width: 80%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: var(--highlight-color);
+}
+
+#modalAddToCart {
+  margin-top: 15px;
+  padding: 10px 25px;
+  background-color: var(--navbar-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#modalAddToCart:hover {
+  background-color: var(--highlight-color);
+  color: #222;
+}
+
 /* Responsive Navbar */
 @media (max-width: 980px) {
   .navbar {
@@ -106,151 +176,187 @@ nav.nav-links a:hover {
     justify-content: center;
   }
 }
+
+/* Section header */
 .text {
-      max-width: var(--max-content-width);
-      margin: 60px auto 20px auto;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+  max-width: var(--max-content-width);
+  margin: 60px auto 20px auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 
-    .text h3 {
-      font-size: 1.8rem;
-      color: #6e497a;
-      font-weight: 700;
-      flex-shrink: 0;
-      white-space: nowrap;
-    }
+.text h3 {
+  font-size: 1.8rem;
+  color: #6e497a;
+  font-weight: 700;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
 
-    .horizontal-line {
-      flex-grow: 1;
-      border-top: 3px solid #987c98;
-      opacity: 0.6;
-    }
-    /* Book Grid */
-    .book {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .book-item {
-      background: white;
-      width: 200px;
-      border-radius: 8px;
-      box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      padding: 15px 10px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.2s ease;
-    }
-    .book-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    }
-    .book-item img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 5px;
-      margin-bottom: 12px;
-    }
-    .book-item p {
-      margin: 6px 0;
-      font-weight: 600;
-      color: var(--dark-color);
-    }
-    .book-item p:nth-child(3) {
-      font-weight: 500;
-      color: #666;
-    }
+.horizontal-line {
+  flex-grow: 1;
+  border-top: 3px solid #987c98;
+  opacity: 0.6;
+}
 
-    /* Button */
-    .button {
-      background-color: var(--button-bg);
-      border: none;
-      color: white;
-      cursor: pointer;
-      border-radius: 4px;
-      padding: 10px 0;
-      font-size: 1em;
-      font-weight: 600;
-      margin-top: 10px;
-      transition: background-color 0.3s;
-    }
-    .button:hover,
-    .button:focus {
-      background-color: var(--button-hover-bg);
-      outline: none;
-    }
-    /* Footer */
-    footer {
-      background-color: var(--primary-color);
-      color: white;
-      padding: 40px 20px;
-      margin-top: 80px;
-    }
+/* Book Grid */
+.book {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+}
 
-    .footer-container {
-      max-width: var(--max-content-width);
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
+/* Book item - medium size between old and larger */
+.book-item {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #8b8a8a;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 20px 15px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  flex: 0 0 calc(30% - 20px); 
+  min-height: 470px;
+}
 
-    .footer-column {
-      flex: 1 1 250px;
-      min-width: 220px;
-    }
+.book-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
 
-    .footer-column h3 {
-      margin-bottom: 15px;
-      font-size: 1.3em;
-      font-weight: 700;
-    }
+.book-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
 
-    .footer-column ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+.book-item p {
+  margin: 8px 0;
+  font-weight: 600;
+  color: var(--dark-color);
+}
 
-    .footer-column ul li {
-      margin-bottom: 10px;
-    }
+.book-item p:nth-child(3) {
+  font-weight: 500;
+  color: #666;
+}
 
-    .footer-column ul li a {
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      font-weight: 600;
-    }
+.hidden {
+  display: none;
+}
 
-    .footer-column ul li a:hover {
-      color: var(--highlight-color);
-    }
+.see-all-btn {
+  float: right;
+  margin-top: -30px;
+  margin-right: 10px;
+  background-color: #444;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9em;
+}
 
-    .social-icons a {
-      margin-right: 15px;
-      display: inline-block;
-    }
+.see-all-btn:hover {
+  background-color: #222;
+}
 
-    .social-icons img {
-      vertical-align: middle;
-      filter: brightness(0) invert(1);
-      transition: filter 0.3s ease;
-      width: 30px;
-      height: 30px;
-      border-radius: 5px;
-    }
+/* Buttons */
+.button {
+  background-color: var(--button-bg);
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 12px 0;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
 
-    .social-icons a:hover img {
-      filter: brightness(0) invert(0.7);
-    }
+.button:hover,
+.button:focus {
+  background-color: var(--button-hover-bg);
+  outline: none;
+}
+
+/* Footer */
+footer {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 40px 20px;
+  margin-top: 80px;
+}
+
+.footer-container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  flex: 1 1 250px;
+  min-width: 220px;
+}
+
+.footer-column h3 {
+  margin-bottom: 15px;
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 600;
+}
+
+.footer-column ul li a:hover {
+  color: var(--highlight-color);
+}
+
+.social-icons a {
+  margin-right: 15px;
+  display: inline-block;
+}
+
+.social-icons img {
+  vertical-align: middle;
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.social-icons a:hover img {
+  filter: brightness(0) invert(0.7);
+}

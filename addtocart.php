@@ -47,5 +47,5 @@ if ($existingItem) {
 
 $stmt->close();
 
-header("Location: home.php");
+header("Location: cart.php");
 exit;

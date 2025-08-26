@@ -134,6 +134,40 @@
     </button>
   </div>
 </div>
+ <!-- <div class="text">
+  <h3>Books</h3>
+  <div class="horizontal-line"></div>
+</div>
+<div class="books-container">
+  <?php
+  include 'connection.php'; 
+
+  $sql = "SELECT * FROM Books";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+      while ($row = $result->fetch_assoc()) {
+          $bookName = htmlspecialchars($row['BookName'], ENT_QUOTES);
+          $price = number_format($row['Price'], 2);
+          $imageFile = htmlspecialchars($row['Image']); 
+          $imagePath = "images/" . $imageFile; 
+          $description = htmlspecialchars($row['Description'], ENT_QUOTES);
+
+          echo "
+          <div class='book' onclick=\"showProductModal('$bookName', $price, '$imagePath', '$description')\">
+            <img src='$imagePath' alt='$bookName' />
+            <p>$bookName</p>
+            <p>NPR. $price</p>
+            <button onclick=\"event.stopPropagation(); addToCart('$bookName', $price)\">Add To Cart</button>
+          </div>
+          ";
+      }
+  } else {
+      echo "<p>No books available at the moment.</p>";
+  }
+  ?>
+</div> -->
+
 
 <!-- Modal Structure -->
 <div id="productModal" class="modal">
@@ -159,22 +193,22 @@
     <div class="candle1">
       <img src="images/lav.jpg" alt="Lavender Scented Candles" />
       <p>Lavender Scented Candles</p>
-      <p>NPR.1580</p>
-      <button class="add" onclick="addToCart('Lavender Scented Candles', 1580)">Add To Cart</button>
+      <p>NPR.580</p>
+      <button class="add" onclick="addToCart('Lavender Scented Candles', 580)">Add To Cart</button>
     </div>
 
     <div class="candle2">
       <img src="images/peach.jpg" alt="Peach Scented Candles" />
       <p>Peach Scented Candles</p>
-      <p>NPR.2100</p>
-      <button name="add" onclick="addToCart('Peach Scented Candles', 2100)">Add To Cart</button>
+      <p>NPR.200</p>
+      <button name="add" onclick="addToCart('Peach Scented Candles', 200)">Add To Cart</button>
     </div>
 
     <div class="candle4">
       <img src="images/aqua.jpg" alt="Aqua Scented Candles" />
       <p>Aqua Scented Candles</p>
-      <p>NPR.4600</p>
-      <button name="add" onclick="addToCart('Aqua Scented Candles', 4600)">Add To Cart</button>
+      <p>NPR.600</p>
+      <button name="add" onclick="addToCart('Aqua Scented Candles', 600)">Add To Cart</button>
     </div>
   </div>
 
@@ -202,8 +236,8 @@
     <div class="bookmark3">
       <img src="images/bm.jpg" alt="Acrylic Bookmark" />
       <p>Acrylic Customizable BookMark</p>
-      <p>NPR.750</p>
-      <button name="add" onclick="addToCart('Acrylic Customizable BookMark', 750)">Add To Cart</button>
+      <p>NPR.500</p>
+      <button name="add" onclick="addToCart('Acrylic Customizable BookMark', 500)">Add To Cart</button>
     </div>
   </div>
 	<!--Starting of footer-->	
@@ -254,25 +288,56 @@
     }
 
     // Modal functions
-    function showProductModal(name, price, imgSrc, description = "This is a lovely product you'll enjoy.") {
-       // Optional: sanitize productName if you expect special chars
-  document.getElementById('formProductName').value = productName;
-  document.getElementById('formPrice').value = price;
+  //   function showProductModal(name, price, imgSrc, description = "This is a lovely product you'll enjoy.") {
+  //      // Optional: sanitize productName if you expect special chars
+  // document.getElementById('formProductName').value = productName;
+  // document.getElementById('formPrice').value = price;
 
-  document.getElementById('addToCartForm').submit();
-      }
+  // document.getElementById('addToCartForm').submit();
+  //     }
     
 
-    function closeModal() {
-      document.getElementById('productModal').style.display = 'none';
-    }
+  //   function closeModal() {
+  //     document.getElementById('productModal').style.display = 'none';
+  //   }
 
-    window.onclick = function (event) {
-      const modal = document.getElementById('productModal');
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    };
+  //   window.onclick = function (event) {
+  //     const modal = document.getElementById('productModal');
+  //     if (event.target == modal) {
+  //       modal.style.display = "none";
+  //     }
+    //};
+    // Show modal with product details
+function showProductModal(name, price, imgSrc, description = "No description available.") {
+  const modal = document.getElementById('productModal');
+  document.getElementById('modalName').textContent = name;
+  document.getElementById('modalPrice').textContent = "NPR " + price.toFixed(2);
+  document.getElementById('modalImage').src = imgSrc;
+  document.getElementById('modalImage').alt = name;
+  document.getElementById('modalDescription').textContent = description;
+
+  // Set up Add to Cart button inside modal
+  const addToCartBtn = document.getElementById('modalAddToCart');
+  addToCartBtn.onclick = function() {
+    addToCart(name, price);
+  };
+
+  modal.style.display = 'block';
+}
+
+// Close modal
+function closeModal() {
+  document.getElementById('productModal').style.display = 'none';
+}
+
+// Close modal when clicking outside the modal content
+window.onclick = function(event) {
+  const modal = document.getElementById('productModal');
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+};
+
   </script>
 
   <form id="addToCartForm" action="addtocart.php" method="POST" style="display:none;">

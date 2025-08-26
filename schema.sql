@@ -37,3 +37,14 @@ CREATE TABLE sellproducts (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    BookName VARCHAR(255) NOT NULL,
+    Price DECIMAL(10, 2),
+    Image VARCHAR(255),
+    Description TEXT,
+    Genre VARCHAR(100),
+    Author VARCHAR(100)
+);
+
+
