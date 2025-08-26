@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="style1.css" />
 </head>
 <body>
-  <header>
+<header>
     <div class="navbar">
       <div class="logo">
         <img src="images/img.jpg" alt="Logo" />
@@ -33,37 +33,71 @@
       </nav>
 
       <div class="search-bar">
-        <a href="cart.php"
-          ><img src="images/cart.jpg.png" alt="Cart" width="30"
-        /></a>
+        <a href="cart.php">
+          <img src="images/cart.jpg.png" alt="Cart" width="30" />
+        </a>
         <input type="text" placeholder="Search..." />
         <a href="logout.php">Logout</a>
       </div>
     </div>
   </header>
+<section class="offer" style="text-align: center; padding: 40px 15px; background-color: #fdf9fc;">
+  <h1 style="font-size: 30px; color: #6b3c83; margin-bottom: 10px;">Flash Sale</h1>
+  <h2 style="font-size: 22px; color: #9c5ab0; margin-bottom: 20px;">Sale Up To 40% Off</h2>
 
-  <!-- <section class="offer">
-    <h1>CHOOSE YOUR AESTHETIC</h1>
-    <h2>SALE UPTO 40%</h2>
-    <p style="text-align: right; max-width: 600px; margin-left: auto;">
-      We care for your interest and enthusiasm about books.
-    </p>
-    <p>So we provide you with the best offers.</p>
-    <div>
-      <img
-        src="images/read.webp"
-        alt="Reading Image"
-        id="fairy"
-        style="max-width: 320px; border-radius: 10px; box-shadow: 0 6px 12px rgba(156,90,176,0.3);"
-      />
-      <img
-        src="images/st.webp"
-        alt="Books Image"
-        style="max-width: 320px; border-radius: 10px; box-shadow: 0 6px 12px rgba(156,90,176,0.3);"
-      />
-    </div>
-  </section> -->
+  <p style="max-width: 650px; margin: 0 auto 10px auto; font-size: 15px; color: #555;">
+    At <strong>Shelf of Tales</strong>, we care about your love for books.
+  </p>
+  <p style="max-width: 650px; margin: 0 auto 30px auto; font-size: 15px; color: #555;">
+    Find your next favorite read with exclusive discounts.
+  </p>
 
+  <div style="
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+  ">
+    <img
+      src="images/read.webp"
+      alt="Reading"
+      style="width: 180px; height: 120px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 10px rgba(156,90,176,0.2); transition: transform 0.2s;"
+      onmouseover="this.style.transform='scale(1.03)'"
+      onmouseout="this.style.transform='scale(1)'"
+    />
+
+    <img
+      src="images/st.webp"
+      alt="Books"
+      style="width: 180px; height: 120px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 10px rgba(156,90,176,0.2); transition: transform 0.2s;"
+      onmouseover="this.style.transform='scale(1.03)'"
+      onmouseout="this.style.transform='scale(1)'"
+    />
+
+    <img
+      src="images/bok.webp"
+      alt="Stack"
+      style="width: 180px; height: 120px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 10px rgba(156,90,176,0.2); transition: transform 0.2s;"
+      onmouseover="this.style.transform='scale(1.03)'"
+      onmouseout="this.style.transform='scale(1)'"
+    />
+
+    <img
+      src="images/gir.webp"
+      alt="Reading Girl"
+      style="width: 180px; height: 120px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 10px rgba(156,90,176,0.2); transition: transform 0.2s;"
+      onmouseover="this.style.transform='scale(1.03)'"
+      onmouseout="this.style.transform='scale(1)'"
+    />
+  </div>
+</section>
+
+<div class="text">
+  <h3>Our Services</h3>
+  <div class="horizontal-line"></div>
+</div>
   <section class="ser">
     <div>
       <img src="images/del.jpg" alt="Home Delivery" />

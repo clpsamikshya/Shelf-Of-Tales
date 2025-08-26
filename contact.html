@@ -1,168 +1,245 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="keywords" content="bookstore">
-	<meta name="author" content="Shelf of Tales">
-	<title>Shelf of Tales</title>
-	<link rel="stylesheet" type="text/css" href="style4.css">
-	<script type="text/javascript" src="contact.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="bookstore">
+  <meta name="author" content="Shelf of Tales">
+  <title>Shelf of Tales</title>
+  <link rel="stylesheet" type="text/css" href="style4.css">
+  <script type="text/javascript" src="contact.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+
+    .con {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .help-options {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .help-options button {
+      padding: 15px 25px;
+      font-size: 16px;
+      border: none;
+      background-color: #987c98;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .help-options button:hover {
+      background-color: #7b637b;
+    }
+
+    .contact-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+    }
+
+    .formm, .cont {
+      flex: 1 1 45%;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .formm h2, .cont h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .formm input[type="text"],
+    .formm input[type="P.Number"],
+    .formm textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .formm input[type="submit"] {
+      background-color: #987c98;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .formm input[type="submit"]:hover {
+      background-color: #7b637b;
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .contact-info img {
+      margin-right: 15px;
+      width: 40px;
+    }
+
+    .contact-info p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .contact-section {
+        flex-direction: column;
+      }
+
+      .formm, .cont {
+        width: 100%;
+      }
+
+      .help-options {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
-<body class="pic" >
-	<section>
+<body class="pic">
 
-<!--Starting of header-->
-<header>
-  <div class="navbar">
-    <div class="logo">
-      <img src="images/img.jpg" alt="Logo" />
+  <!-- Header (unchanged) -->
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <img src="images/img.jpg" alt="Logo" />
+      </div>
+
+      <nav class="nav-links">
+        <a href="home.php">Home</a>
+        <a href="product.php">Product</a>
+        <a href="contact.html">Contact</a>
+        <a href="blog.html">Blog</a>
+        <a href="research.html">Research</a>
+      </nav>
+
+      <div class="search-bar">
+        <a href="cart.php">
+          <img src="images/cart.jpg.png" alt="Cart" width="30" />
+        </a>
+        <input type="text" placeholder="Search..." />
+        <a href="logout.php">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contact Section -->
+  <div class="con">
+    <div class="help-options">
+      <button>How can I help you?</button>
+      <button>Return an Item</button>
+      <button>Cancel Order</button>
+      <button>Change My Order</button>
     </div>
 
-    <nav class="nav-links">
-      <a href="home.php">Home</a>
-      <a href="product.php">Product</a>
-      <a href="contact.html">Contact</a>
-      <a href="blog.html">Blog</a>
-      <a href="research.html">Research</a>
-    </nav>
+    <div class="contact-section">
+      <!-- Contact Form -->
+      <div class="formm">
+        <h2>Send Message</h2>
+        <form name="myform" onsubmit="return validateform()">
+          <label>Full Name:</label>
+          <input type="text" name="fname" placeholder="Enter Your Name..">
 
-    <div class="search-bar">
-      <a href="cart.php">
-        <img src="images/cart.jpg.png" alt="Cart" width="30" />
-      </a>
-      <input type="text" placeholder="Search..." />
-      <a href="logout.php">Logout</a>
-    </div>
-  </div>
-</header>
- 	<br>
- 	<div class="con" style="border: 5px solid black;">
- 		<!--option to modify order-->
-		 <button>
-			<div class="under">
- 		<p style="font-size: 20px;">How can I help you?</p>
-			
-			</button>
- 		<button >
- 			<div class="under">
- 				<p style="font-size: 20px;">Return an Item</p>
- 			</div>
- 		</button>
+          <label>Email:</label>
+          <input type="text" name="email" placeholder="name@domain.com">
 
- 		<button >
- 			<div class="under">
- 				<p style="font-size: 20px;">Cancel Order</p>
- 			</div>
- 		</button>
+          <label>Mobile Number:</label>
+          <input type="P.Number" name="mobile" placeholder="Enter your phone number..">
 
- 		<button >
- 			<div class="under">
- 				<p style="font-size: 20px;">Change My Order</p>
- 			</div>
- 		</button>
+          <label>Message:</label>
+          <textarea name="message" rows="5" placeholder="Type your message here...."></textarea>
 
- 	</div>
+          <input type="submit" name="button" value="Send">
+        </form>
+      </div>
 
- 	<br>
+      <!-- Contact Info -->
+      <div class="cont">
+        <h2>Contact Us</h2>
 
-<table>
- 	<div class="con">
- 		<!--starting of form -->
- 		<div class="formm" >
- 			<h2>Send Message</h2>
+        <div class="contact-info">
+          <a href="https://www.google.com/maps/place/Kumaripati,+Lalitpur/" target="_blank">
+            <img src="images/location.jpg" alt="Location">
+          </a>
+          <p>Kumaripati, Lalitpur</p>
+        </div>
 
- 			<form name="myform" onsubmit="validateform()">
-				<p style="padding-left: 10px;">Full Name: <input type="text" name="fname" placeholder="Enter Your Name.."></p>
+        <div class="contact-info">
+          <img src="images/contact.jpg" alt="Phone">
+          <p>01555789</p>
+        </div>
 
-				<p >Email: <input  type="text" placeholder="name@domain.com" name="email"></p>
+        <div class="contact-info">
+          <a href="mailto:bookstore123@gmail.com">
+            <img src="images/email.jpg" alt="Email">
+          </a>
+          <p>bookstore123@gmail.com</p>
+        </div>
 
-				<p>Mobile Number: <input type="P.Number" name="mobile" placeholder="Enter your phone number.."></p>
-				<br>
-
-				<p>Message: <textarea  name="message" rows="2" cols="55" placeholder="Type your message here...."></textarea></p>
-				
-
-				<input type="submit" name="button" value="send">
-			</form>
- 			
- 			
-			
-
-		</div>
-
-		<div class="cont" >
-			<h2>Contact Us</h2>
-
-			<div class="pic">
-				<image  style="float:right;" src="ll.png" alt="logo" height="200px" width="60%"></image>
-			</div>
-			
-
-			<div class="loaction"><!--loaction of book store-->
-
-				<a href="https://www.google.com/maps/place/Kumaripati,+Lalitpur/@27.6700078,85.3197673,17.74z/data=!4m5!3m4!1s0x39eb19ce1dace9ed:0xfb9c8b305818fb7d!8m2!3d27.6699427!4d85.3204068" target="blank"><image  style="float: left;" src="images/location.jpg" alt="logo" height="50px" width="8%"></image></a>
-				<p style="padding-top: 10px;">Kumaripati</p>
-				
-			</div>
-
-			<br>
-
-			<div class="phone"><!--phone number of book store-->
-				<image  style="float: left;" src="images/contact.jpg" alt="logo" height="50px" width="8%"></image>
-				<p style="padding-top: 5px;">01555789</p>
-			</div>
-
-			<br>
-
-			<div class="email"><!--email of book store-->
-				<a href="https://webmail.au.syrahost.com/" target="blank"><image  style="float: left;" src="images/email.jpg" alt="logo" height="75px" width="10%"></image></a>
-				<p style="padding-top: 30px;">bookstore123@gmail.com</p>
-			</div>
-
-			
-			
-		</div>
-	</div>
-</table>
-
-
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><!--for line spacing-->
-
-	<!--Starting of footer-->	
-			<footer>
-  <div class="footer-container">
-    <div class="footer-column">
-      <h3>Customer Care</h3>
-      <ul>
-        <li><a href="#Help Center">Help Center</a></li>
-        <li><a href="#How To Shop">How To Shop</a></li>
-        <li><a href="#Gift Card">Gift Card</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-column">
-      <h3>Learn More</h3>
-      <ul>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="#Terms & Conditions">Terms & Conditions</a></li>
-        <li><a href="#Privacy Policy">Privacy Policy</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-column">
-      <h3>Stay Connected</h3>
-      <div class="social-icons">
-        <a href="https://www.facebook.com/"><img src="images/facebook.jpg" alt="Facebook" width="30" height="30"></a>
-        <a href="https://www.instagram.com/"><img src="images/insta.jpg" alt="Instagram" width="30" height="30"></a>
-        <a href="https://web.whatsapp.com/"><img src="images/whatsapp.png" alt="WhatsApp" width="30" height="30"></a>
-        <a href="https://twitter.com/"><img src="images/twitter.jpg" alt="Twitter" width="30" height="30"></a>
       </div>
     </div>
   </div>
-</footer>
 
- </body>
- </html>	
+  <!-- Footer (unchanged) -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Customer Care</h3>
+        <ul>
+          <li><a href="#Help Center">Help Center</a></li>
+          <li><a href="#How To Shop">How To Shop</a></li>
+          <li><a href="#Gift Card">Gift Card</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Learn More</h3>
+        <ul>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#Terms & Conditions">Terms & Conditions</a></li>
+          <li><a href="#Privacy Policy">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Stay Connected</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/"><img src="images/facebook.jpg" alt="Facebook" width="30" height="30"></a>
+          <a href="https://www.instagram.com/"><img src="images/insta.jpg" alt="Instagram" width="30" height="30"></a>
+          <a href="https://web.whatsapp.com/"><img src="images/whatsapp.png" alt="WhatsApp" width="30" height="30"></a>
+          <a href="https://twitter.com/"><img src="images/twitter.jpg" alt="Twitter" width="30" height="30"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

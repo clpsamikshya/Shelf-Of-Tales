@@ -7,6 +7,8 @@
   --max-content-width: 1200px;
 }
 
+
+
 /* Navbar */
 .navbar {
   background-color: var(--navbar-color);
@@ -106,14 +108,7 @@ nav.nav-links a:hover {
   }
 }
 
-		a{
-			color: black;
-		}
-		
-		a:hover{
-			background-color:  var(--dark-color);
-			color: black;
-		}
+	
 
 		footer {
   background-color: #988398ff;
