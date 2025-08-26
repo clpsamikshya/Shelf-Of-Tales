@@ -43,13 +43,13 @@ $productImages = [
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #fafafa;
+      background: #a790a7ff;
       margin: 0; padding: 20px;
       color: #333;
     }
     h1 {
       text-align: center;
-      color: #987c98; /* purple */
+      color: #fff;
       margin-bottom: 30px;
     }
     .cart-container {
