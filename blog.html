@@ -7,46 +7,34 @@
 	<meta name="author" content="Shelf of Tales">
 	<title>Shelf of Tales</title>
 	<link rel="stylesheet" type="text/css" href="style3.css">
-	<style type="text/css">
-		a{
-			color: black;
-		}
-		
-		a:hover{
-			background-color:  var(--dark-color);
-			color: black;
-		}
-	</style>
 </head>
 <body class="pic" >
 	<section>
 
-<!--Starting of header-->
-<div class="navbar">
-	<header style=" width: 100%; height: 100%;">
-<!--logo of bookstore-->
-		<div  class="logo">
-		<image src="images/image.jpg" width="100%" height="20%"></image>
-		</div>
-
-		
-
-<!--Starting of nav bar-->
- 
-
-    <a href="home.php"><image src="images/home.png" width="30px"></imgage></a>
-    <a href="product.php"> <image src="images/books.png" width="30px"></image></a>
-    <a href="contact.html"><image src="images/con.png" width="30px"></image></a>
-    <a href="blog.html"><image src="images/blog.webp" width="30px"></image></a>
-    <a href="research.html"><image src="images/research.png" width="30px"></image></a>
-    <div class="search-bar">
-		<a href="123.html"><image src="images/cart.jpg.png" width="30px"></image></a>
-        <input type="text" placeholder="Search...">
-		<a href="logout.php">Logout</a>
+<header>
+  <div class="navbar">
+    <div class="logo">
+      <img src="images/img.jpg" alt="Logo" />
     </div>
-</div>
-</section>
- 	</header>	
+
+    <nav class="nav-links">
+      <a href="home.php">Home</a>
+      <a href="product.php">Product</a>
+      <a href="contact.html">Contact</a>
+      <a href="blog.html">Blog</a>
+      <a href="research.html">Research</a>
+    </nav>
+
+    <div class="search-bar">
+      <a href="cart.php">
+        <img src="images/cart.jpg.png" alt="Cart" width="30" />
+      </a>
+      <input type="text" placeholder="Search..." />
+      <a href="logout.php">Logout</a>
+    </div>
+  </div>
+</header>
+
  	<br>
 
  				<div class="logo">	
@@ -171,59 +159,39 @@
 
 				<!--Starting of footer-->	
 				<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>Customer Care</h3>
+      <ul>
+        <li><a href="#Help Center">Help Center</a></li>
+        <li><a href="#How To Shop">How To Shop</a></li>
+        <li><a href="#Gift Card">Gift Card</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
 
-				<hr>
+    <div class="footer-column">
+      <h3>Learn More</h3>
+      <ul>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#Terms & Conditions">Terms & Conditions</a></li>
+        <li><a href="#Privacy Policy">Privacy Policy</a></li>
+      </ul>
+    </div>
 
-					<div class="extra">
-						<div style="float: left;">
-						<h3>Customer Care</h3>
-						<!--list for customer care-->
-							<ul class="customercare-list">
-								<li><a href="#Help Center">Help Center</a></li>
-								<li><a href="#How To Shop">How To Shop</a></li>
-								<li><a href="#Gift Card">Gift Card</a></li>
-								<li><a href="Contact.html">Contact Us</a></li>
-							</ul>
-						</div>
+    <div class="footer-column">
+      <h3>Stay Connected</h3>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/"><img src="images/facebook.jpg" alt="Facebook" width="30" height="30"></a>
+        <a href="https://www.instagram.com/"><img src="images/insta.jpg" alt="Instagram" width="30" height="30"></a>
+        <a href="https://web.whatsapp.com/"><img src="images/whatsapp.png" alt="WhatsApp" width="30" height="30"></a>
+        <a href="https://twitter.com/"><img src="images/twitter.jpg" alt="Twitter" width="30" height="30"></a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-						<div style="float: left; padding-left: 200px;">
-							<h3>Book Store</h3>
-							<ul class="bookstore-list">
-								<li><a href="Research.html">Research</a></li>
-								<li><a href="Blog.html">Blog</a></li>
-								<li><a href="#Terms & Conditions">Terms & Conditions</a></li>
-								<li><a href="#Privacy Policy">Privacy Policy</a></li>
-							</ul>
-						</div>
-
-						<!--links for social website-->
-						<div style="float: left; padding-left:150px;">
-							<h3>Stay Connected</h3>
-							
-							<div style="float:left;">
-								<a href="https://www.facebook.com/"><image src="images/facebook.jpg" alt="logo" height="100%" width="30px"></image></a><!--link to facebook-->
-							</div>
-
-							<div style="float:left; padding-left:40px">
-								<a href="https://www.instagram.com/"><image src="images/inatagram.jpg" alt="logo" height="100%" width="30px"></image></a><!--link to instagram-->
-							</div>
-
-							<div style="float:left; padding-left:40px">
-								<a href="https://web.whatsapp.com/"><image src="images/whatsapp.png" alt="logo" height="100%" width="30px"></image></a><!--link to whatapp-->
-							</div>
-
-							<div style="float:left; padding-left:40px">
-								<a href="https://twitter.com/"><image src="images/twitter.jpg" alt="logo" height="100%" width="30px"></image></a><!--link to twitter-->
-							</div>
-
-							<div style="float: right; padding-left: 100px;">
-								<p>@2022 copyright All Rights Reserved</p><!--for copyright-->
-							</div>
-						</div>
-
-						
-					</div>
-			</footer>
 </body>
 </html>
 			  

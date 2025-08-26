@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows == 1) {
       
-        header('location: home.php');
+        header("Location: home.php?UserName=" . urlencode($UserName));
    
     } else {
         

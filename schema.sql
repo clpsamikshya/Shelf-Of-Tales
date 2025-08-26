@@ -1,0 +1,39 @@
+CREATE DATABASE IF NOT EXISTS shelfoftales;
+USE shelfoftales;
+
+CREATE TABLE IF NOT EXISTS customers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(100) NOT NULL,
+    LastName VARCHAR(100) NOT NULL,
+    Email VARCHAR(255) NOT NULL UNIQUE,
+    UserName VARCHAR(100) NOT NULL UNIQUE,
+    Password VARCHAR(255) NOT NULL,
+    Contact VARCHAR(20)
+);
+
+CREATE TABLE IF NOT EXISTS product (
+    productname VARCHAR(255) PRIMARY KEY,
+    Author VARCHAR(255) NOT NULL,
+    Descriptions TEXT,
+    Genre VARCHAR(100),
+    Price DECIMAL(10,2),
+    Images VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS cartt (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    UserName VARCHAR(255) NOT NULL,
+    ProductName VARCHAR(255) NOT NULL,
+    Quantity INT NOT NULL DEFAULT 1,
+    Price DECIMAL(10,2) NOT NULL,
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE sellproducts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+

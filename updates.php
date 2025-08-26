@@ -1,48 +1,56 @@
 <?php
-    include "connection.php";
+include "connection.php";
 
-    // Check if form was submitted
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Retrieve and sanitize inputs
-        $productName = $conn->real_escape_string($_POST['productName']);
-        $author = $conn->real_escape_string($_POST['author']);
-        $description = $conn->real_escape_string($_POST['description']);
-        $genre = $conn->real_escape_string($_POST['genre']);
-        $price = floatval($_POST['price']); // Convert to float for price
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get and sanitize inputs
+    $id = intval($_POST['id']);  // product id (must be in the form as hidden input)
+    $productName = $conn->real_escape_string($_POST['productName']);
+    $author = $conn->real_escape_string($_POST['author']);
+    $genre = $conn->real_escape_string($_POST['genre']);
+    $price = floatval($_POST['price']);
+    $description = $conn->real_escape_string($_POST['description'] ?? '');
 
-        // Handle image upload if provided
-        if ($_FILES['image']['error'] == UPLOAD_ERR_OK) {
-            $image_name = $_FILES['image']['name'];
-            $image_temp = $_FILES['image']['tmp_name'];
-            $image_path = "images/" . $image_name;
-            
-            // Move uploaded file to destination
-            if (move_uploaded_file($image_temp, $image_path)) {
-                // File moved successfully
-            } else {
-                echo "Error uploading file.";
-                exit;
-            }
+    // First, get current image name from DB to keep if no new image uploaded
+    $stmt = $conn->prepare("SELECT Images FROM shelfoftales.sellproducts WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $res = $stmt->get_result();
+    $row = $res->fetch_assoc();
+    $currentImage = $row ? $row['Images'] : '';
+    $stmt->close();
+
+    // Handle image upload if provided
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
+        $image_name = basename($_FILES['image']['name']);
+        $image_temp = $_FILES['image']['tmp_name'];
+        $target_dir = "images/";
+        $image_path = $target_dir . $image_name;
+
+        if (move_uploaded_file($image_temp, $image_path)) {
+            // Optionally delete old image file here if you want
+            // unlink($target_dir . $currentImage);
         } else {
-            $image_path = ""; // Default image path if no new image uploaded
+            echo "Error uploading new image.";
+            exit;
         }
-
-        // Prepare SQL query to update the product based on criteria (e.g., ProductName and Author)
-        $update_query = "UPDATE product 
-                         SET Descriptions = '$description', 
-                             Genre = '$genre', 
-                             Price = $price, 
-                             Images = '$image_path' 
-                         WHERE ProductName = '$productName' AND Author = '$author'";
-
-        // Execute query
-        if ($conn->query($update_query) === TRUE) {
-            echo "Product updated successfully";
-        } else {
-            echo "Error updating product: " . $conn->error;
-        }
+    } else {
+        $image_name = $currentImage;  // keep old image if no new one uploaded
     }
 
-    // Close connection
-    $conn->close();
-    ?> 
+    // Prepare update statement with parameterized query for security
+    $stmt = $conn->prepare("UPDATE shelfoftales.sellproducts SET BookName = ?, UserName = ?, BookGenre = ?, Price = ?, Images = ? WHERE id = ?");
+    $stmt->bind_param("sssisi", $productName, $author, $genre, $price, $image_name, $id);
+
+    if ($stmt->execute()) {
+        // Redirect to display.php after success
+        header("Location: display.php");
+        exit;
+    } else {
+        echo "Error updating product: " . $stmt->error;
+    }
+
+    $stmt->close();
+}
+
+$conn->close();
+?>
