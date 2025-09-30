@@ -16,6 +16,23 @@
   />
 
     <link rel="stylesheet" href="style1.css" />
+    <style>
+.search-btn{
+    background: #D8BFD8 !important;  /* your brand color */
+    color: #fff !important;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.search-btn:hover{
+    background: #C2A3C2 !important;  /* slightly darker on hover */
+    color: #fff !important;
+}
+
+.search-form input:focus {
+    border-color: #D8BFD8;
+}
+</style>
 </head>
 <body>
 <header>
@@ -36,7 +53,11 @@
         <a href="cart.php">
           <img src="images/cart.jpg.png" alt="Cart" width="30" />
         </a>
-        <input type="text" placeholder="Search..." />
+          <form action="search.php" method="GET" class="search-form" style="max-width:460px; margin:20px auto; display:flex; align-items:center; position:relative;">
+    <input type="text" id="searchInput" name="query" placeholder="Search books..." autocomplete="off" style="flex:1; padding:10px 15px; border-radius:25px 0 0 25px; border:1px solid #ccc; outline:none;">
+    <button type="submit" class="btn search-btn" style="border-radius:0 25px 25px 0; margin-left:-1px; padding:10px 20px;">Search</button>
+    <div id="suggestions" style="position:absolute; top:50px; left:0; right:0; background:#fff; border:1px solid #ccc; z-index:1000; max-height:300px; overflow-y:auto;"></div>
+</form>
         <a href="logout.php">Logout</a>
       </div>
     </div>
@@ -94,31 +115,6 @@
   </div>
 </section>
 
-<div class="text">
-  <h3>Our Services</h3>
-  <div class="horizontal-line"></div>
-</div>
-  <section class="ser">
-    <div>
-      <img src="images/del.jpg" alt="Home Delivery" />
-      <h5>Home Delivery</h5>
-    </div>
-
-    <div>
-      <img src="images/py.jpg" alt="Payment" />
-      <h5>Payment</h5>
-    </div>
-
-    <div>
-      <img src="images/qu.jpg" alt="Quality Assurance" />
-      <h5>Quality Assurance</h5>
-    </div>
-
-    <div>
-      <img src="images/ret.jpg" alt="Guarantee Return" />
-      <h5>Guarantee Return</h5>
-    </div>
-  </section>
 <!-- Books Section -->
 <div class="text">
   <h3>Books</h3>
@@ -274,6 +270,38 @@
       <button name="add" onclick="addToCart('Acrylic Customizable BookMark', 500)">Add To Cart</button>
     </div>
   </div>
+
+ <div class="text">
+  <h3>Our Services</h3>
+  <div class="horizontal-line"></div>
+</div>
+
+<section class="ser">
+  <div>
+    <img src="images/del.jpg" alt="Home Delivery" />
+    <h5>Home Delivery</h5>
+  </div>
+
+  <div>
+    <a href="quality.html">
+      <img src="images/qu.jpg" alt="Quality Assurance" />
+      <h5>Quality Assurance</h5>
+    </a>
+  </div>
+
+  <div>
+    <img src="images/py.jpg" alt="Payment" />
+    <h5>Payment</h5>
+  </div>
+
+  <div>
+    <a href="return.html">
+      <img src="images/ret.jpg" alt="Guarantee Return" />
+      <h5>Guarantee Return</h5>
+    </a>
+  </div>
+</section>
+
 	<!--Starting of footer-->	
 	<footer>
   <div class="footer-container">

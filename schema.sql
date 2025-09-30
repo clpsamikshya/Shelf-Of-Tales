@@ -46,4 +46,11 @@ CREATE TABLE accessories (
     Price DECIMAL(10, 2)
 );
 
+CREATE TABLE IF NOT EXISTS recentsearches (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    SearchText VARCHAR(255) NOT NULL,
+    UserName VARCHAR(255),  -- optional if logged in users
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 
